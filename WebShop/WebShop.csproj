@@ -9,10 +9,12 @@
     <None Remove="GoodRepository\" />
     <None Remove="Goods\" />
     <None Remove="ShopEngine\" />
+    <None Remove="CSVFIles\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="GoodsRepository\" />
     <Folder Include="Goods\" />
     <Folder Include="ShopEngine\" />
+    <Folder Include="CSVFIles\" />
   </ItemGroup>
 </Project>
