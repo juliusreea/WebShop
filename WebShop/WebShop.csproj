@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="GoodRepository\" />
+    <None Remove="Goods\" />
+    <None Remove="ShopEngine\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="GoodsRepository\" />
+    <Folder Include="Goods\" />
+    <Folder Include="ShopEngine\" />
+  </ItemGroup>
+</Project>
