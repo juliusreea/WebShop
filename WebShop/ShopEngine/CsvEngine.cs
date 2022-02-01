@@ -104,7 +104,7 @@ namespace WebShop.ShopEngine
 
             foreach (var line in lines)
             {
-                string[] meatLine = line.Split(',');
+                string[] meatLine = line.Split(";") ;
                 Meat meatData = new();
                 meatData.Name = meatLine[0];
                 meatData.Protein = Convert.ToDouble(meatLine[1], CultureInfo.InvariantCulture);

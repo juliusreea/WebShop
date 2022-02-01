@@ -5,11 +5,14 @@ namespace WebShop.ShopEngine
 { 
     public class Menu
     {
+        public Cart cart = new Cart(); 
         public MenuWindows windows = new();
+        public bool doContinue = true;
+        public Printer printer = new();
         public void ShopInterface()
         {
-            bool doContinue = true;
-            if (doContinue)
+            
+            while (doContinue)
             {
                 Console.WriteLine("Welcome to webshop \nPlease enter your amount before proceeding further");
                 string userInput = Console.ReadLine();
@@ -17,9 +20,8 @@ namespace WebShop.ShopEngine
                 if (!decimal.TryParse(userInput, out parsedValue))
                 {
                     Console.WriteLine("Your input is incorrect, please enter correct amount");
-                    doContinue = false;
                 }
-                else if (parsedValue <= 0)
+                if (parsedValue <= 0)
                 {
                     Console.Clear();
                     Console.WriteLine("You'll be able only to view goods");
@@ -45,49 +47,60 @@ namespace WebShop.ShopEngine
 
                     else
                     {
+                        Console.Clear();
                         Console.WriteLine("Please select list of good for display");
                         Console.WriteLine("Display Meat List [1]");
                         Console.WriteLine("Display Drink List [2]");
                         Console.WriteLine("Display Vegetables List [3]");
                         Console.WriteLine("Display Sweets List [4]");
 
-                        string menuInput1 = Console.ReadLine().Trim();
+                        string menuInput1 = Console.ReadLine();
                         int parsedValue2;
-                        if (!Int32.TryParse(userInput, out parsedValue2))
-                        {
-                            Console.WriteLine("Your input is incorrect, please try again");
-                        }
-                        else
+                        if (Int32.TryParse(menuInput1, out parsedValue2))
                         {
                             switch (parsedValue2)
                             {
                                 case 1:
                                     Console.Clear();
-                                    Console.WriteLine("Show Meat list ");
-                                    Printer printer = new();
                                     printer.MeatPrinter();
+                                    cart.CartAddingDeviceMeat();
+                                    ReturnToMainMenu();
                                     break;
                                 case 2:
-                                    Console.WriteLine("Show list ");
-                                    Printer printer1 = new();
-                                    printer1.DrinksPrinter();
+                                    Console.Clear();
+                                    printer.DrinksPrinter();
+                                    cart.CartAddingDeviceDrinks();
+                                    ReturnToMainMenu();
                                     break;
                                 case 3:
-                                    Console.WriteLine("Show list ");
-                                    Printer printer2 = new();
-                                    printer2.VegetablesPrinter();
+                                    Console.Clear();
+                                    printer.VegetablesPrinter();
+                                    cart.CartAddingDeviceVegetables();
+                                    ReturnToMainMenu();
                                     break;
                                 case 4:
-                                    Console.WriteLine("Show list ");
-                                    Printer printer3 = new();
-                                    printer3.SweetsPrinter();
+                                    Console.Clear();
+                                    printer.SweetsPrinter();
+                                    cart.CartAddingDeviceSweets();
+                                    ReturnToMainMenu();
                                     break;
                             }
+                            
+                        }
+                        else 
+                        {
+                            Console.WriteLine("Your input is incorrect, please try again");
                         }
                     }
-           
                 }
             }
+            
+        }
+        public void ReturnToMainMenu()
+        {
+            Console.WriteLine("Press any key to return to main menu");
+            string input = Console.ReadLine();
+
         }
     }
 }
