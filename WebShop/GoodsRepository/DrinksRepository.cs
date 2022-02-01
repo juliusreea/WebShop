@@ -2,11 +2,12 @@
 using System.Linq;
 using System.Collections.Generic;
 using WebShop.ShopEngine;
+
 namespace WebShop.GoodsRepository
 {
     public class DrinksRepository
     {
-        public List<Drinks> Drinks;
+        public List<Drinks> Drinks{get;set;}
 
         public DrinksRepository()
         {

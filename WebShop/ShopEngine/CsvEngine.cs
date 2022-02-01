@@ -52,22 +52,16 @@ namespace WebShop.ShopEngine
             foreach (var line in lines)
             {
                 string[] vegetableLine = line.Split(',');
-                vegetables.Add(ParseVegetablesIntoParameters(vegetableLine));
+                Vegetables vegetabelData = new();
+                vegetabelData.Name = vegetableLine[0];
+                vegetabelData.Fibers = double.Parse(vegetableLine[1]);
+                vegetabelData.Price = decimal.Parse(vegetableLine[2]);
+                vegetabelData.Barcode = vegetableLine[3];
+                vegetabelData.Weight = double.Parse(vegetableLine[4]);
+                vegetables.Add(vegetabelData);
             }
             return vegetables;
         }
-        public Vegetables ParseVegetablesIntoParameters(string[] vegetableLine)
-        {
-            Vegetables vegetabelData = new();
-            vegetabelData.Name = vegetableLine[0];
-            vegetabelData.Fibers = double.Parse(vegetableLine[1]);
-            vegetabelData.Price = decimal.Parse(vegetableLine[2]);
-            vegetabelData.Barcode = vegetableLine[3];
-            vegetabelData.Weight = double.Parse(vegetableLine[4]);
-
-            return vegetabelData;
-        }
-
 
         /// Sweets/// Sweets/// Sweets/// Sweets/// Sweets/// Sweets/// Sweets/// Sweets/// Sweets
 

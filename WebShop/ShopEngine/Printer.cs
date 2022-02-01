@@ -24,7 +24,7 @@ namespace WebShop.ShopEngine
                 Console.WriteLine($"{sweet.Name}, \nAmount of Sugars: {sweet.Carbohydrates} ,\nPrice: {sweet.Price},\nBarcode: {sweet.Barcode},\nWeight: {sweet.Weight}");
             }
         }
-        public void VegetablePrinter()
+        public void VegetablesPrinter()
         {
             var vegetable = new VegetablesRepository();
             var veggieList = vegetable.LoadVegetables();
@@ -46,7 +46,7 @@ namespace WebShop.ShopEngine
         {
             DrinksPrinter();
             SweetsPrinter();
-            VegetablePrinter();
+            VegetablesPrinter();
             MeatPrinter();
         }
     }

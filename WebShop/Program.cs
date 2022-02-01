@@ -1,4 +1,5 @@
 ﻿using System;
+using WebShop.ShopEngine;
 
 namespace WebShop
 {
@@ -6,7 +7,8 @@ namespace WebShop
     {
         static void Main(string[] args)
         {
-            
+            Menu menu = new();
+            menu.ShopInterface();
         }
     }
 }
