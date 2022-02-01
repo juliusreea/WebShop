@@ -12,7 +12,7 @@ namespace WebShop.ShopEngine
             var drinkList = drinks.LoadDrinks();
             foreach(var drink in drinkList)
             {
-                Console.WriteLine($"{drink.Name}, \nVolume: {drink.Liters} ,\nPrice: {drink.Price},\nBarcode: {drink.Barcode},\nWeight: {drink.Weight}");
+                Console.WriteLine($"{drink.Name}, Volume: {drink.Liters}, Price: {drink.Price}, Barcode: {drink.Barcode}, Weight: {drink.Weight}");
             }
         }
         public void SweetsPrinter()
@@ -21,7 +21,7 @@ namespace WebShop.ShopEngine
             var sweetsList = sweets.LoadSweets();
             foreach (var sweet in sweetsList)
             {
-                Console.WriteLine($"{sweet.Name}, \nAmount of Sugars: {sweet.Carbohydrates} ,\nPrice: {sweet.Price},\nBarcode: {sweet.Barcode},\nWeight: {sweet.Weight}");
+                Console.WriteLine($"{sweet.Name}, Amount of Sugars: {sweet.Carbohydrates}, Price: {sweet.Price}, Barcode: {sweet.Barcode}, Weight: {sweet.Weight}");
             }
         }
         public void VegetablesPrinter()
@@ -30,7 +30,7 @@ namespace WebShop.ShopEngine
             var veggieList = vegetable.LoadVegetables();
             foreach (var veggie in veggieList)
             {
-                Console.WriteLine($"{veggie.Name}, \nFibers: {veggie.Fibers} ,\nPrice: {veggie.Price},\nBarcode: {veggie.Barcode},\nWeight: {veggie.Weight}");
+                Console.WriteLine($"{veggie.Name}, Fibers: {veggie.Fibers}, Price: {veggie.Price}, Barcode: {veggie.Barcode}, Weight: {veggie.Weight}");
             }
         }
         public void MeatPrinter()
@@ -39,7 +39,7 @@ namespace WebShop.ShopEngine
             var meatList = meats.LoadMeats();
             foreach (var meat in meatList)
             {
-                Console.WriteLine($"{meat.Name}, \nProteins: {meat.Protein} ,\nPrice: {meat.Price},\nBarcode: {meat.Barcode},\nWeight: {meat.Weight}");
+                Console.WriteLine($"{meat.Name}, Proteins: {meat.Protein}, Price: {meat.Price}, Barcode: {meat.Barcode}, Weight: {meat.Weight}");
             }
         }
         public void AllGoodsPrinter()

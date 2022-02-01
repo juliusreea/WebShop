@@ -11,7 +11,7 @@ namespace WebShop.ShopEngine
         
         public List<Drinks> CsvReadFileDrinks()
         {
-            string path = @"Users/juliusvaigauskas/projects/drinks.txt";
+            string path = @"C:\Users\Dell\Documents\GitHub\WebShop\WebShop\CSVFIles\Drinks.csv";
 
             List<string> lines = new List<string>();
 
@@ -22,20 +22,16 @@ namespace WebShop.ShopEngine
             foreach(var line in lines)
             {
                 string[] drinkLine = line.Split(',');
-                drinks.Add(ParseDrinksIntoParameters(drinkLine));
+                Drinks drinkData = new();
+                drinkData.Name = drinkLine[0];
+                drinkData.Liters = Convert.ToDouble(drinkLine[1], CultureInfo.InvariantCulture);
+                drinkData.Price = Convert.ToDecimal(drinkLine[2], CultureInfo.InvariantCulture);
+                drinkData.Barcode = drinkLine[3];
+                drinkData.Weight = Convert.ToDouble(drinkLine[4], CultureInfo.InvariantCulture);
+                drinkData.Index = int.Parse(drinkLine[5]);
+                drinks.Add(drinkData);
             }
             return drinks;
-        }
-        public Drinks ParseDrinksIntoParameters(string[] drinkLine)
-        {
-            Drinks drinkData = new();
-            drinkData.Name = drinkLine[0];
-            drinkData.Liters = double.Parse(drinkLine[1]);
-            drinkData.Price = decimal.Parse(drinkLine[2]);
-            drinkData.Barcode = drinkLine[3];
-            drinkData.Weight = double.Parse(drinkLine[4]);
-
-            return drinkData;
         }
 
         /// Vegetables/// Vegetables/// Vegetables/// Vegetables/// Vegetables/// Vegetables/// Vegetables
@@ -69,7 +65,7 @@ namespace WebShop.ShopEngine
 
         public List<Sweets> CsvReadFileSweets()
         {
-            string path = @"Users/juliusvaigauskas/projects/sweets.txt";
+            string path = @"C:\Users\Dell\Documents\GitHub\WebShop\WebShop\CSVFIles\Sweets.csv";
 
             List<string> lines = new List<string>();
 
@@ -80,23 +76,17 @@ namespace WebShop.ShopEngine
             foreach (var line in lines)
             {
                 string[] sweetsLine = line.Split(',');
-                sweets.Add(ParseSweetsIntoParameters(sweetsLine));
+                Sweets sweetsData = new();
+                sweetsData.Name = sweetsLine[0];
+                sweetsData.Carbohydrates = Convert.ToDouble(sweetsLine[1], CultureInfo.InvariantCulture);
+                sweetsData.Price = Convert.ToDecimal(sweetsLine[2], CultureInfo.InvariantCulture);
+                sweetsData.Barcode = sweetsLine[3];
+                sweetsData.Weight = Convert.ToDouble(sweetsLine[4], CultureInfo.InvariantCulture);
+                sweetsData.Index = int.Parse(sweetsLine[5]);
+                sweets.Add(sweetsData);
             }
             return sweets;
         }
-        public Sweets ParseSweetsIntoParameters(string[] sweetsLine)
-        {
-            Sweets sweetsData = new();
-            sweetsData.Name = sweetsLine[0];
-            sweetsData.Carbohydrates = double.Parse(sweetsLine[1]);
-            sweetsData.Price = decimal.Parse(sweetsLine[2]);
-            sweetsData.Barcode = sweetsLine[3];
-            sweetsData.Weight = double.Parse(sweetsLine[4]);
-
-            return sweetsData;
-        }
-
-
 
         /// Meat/// Meat/// Meat/// Meat/// Meat/// Meat/// Meat/// Meat/// Meat/// Meat
 
@@ -115,21 +105,17 @@ namespace WebShop.ShopEngine
             foreach (var line in lines)
             {
                 string[] meatLine = line.Split(',');
-                meats.Add(ParseMeatIntoParameters(meatLine));
+                Meat meatData = new();
+                meatData.Name = meatLine[0];
+                meatData.Protein = Convert.ToDouble(meatLine[1], CultureInfo.InvariantCulture);
+                meatData.Price = Convert.ToDecimal(meatLine[2], CultureInfo.InvariantCulture);
+                meatData.Barcode = meatLine[3];
+                meatData.Weight = Convert.ToDouble(meatLine[4], CultureInfo.InvariantCulture);
+                meatData.Index = int.Parse(meatLine[5]);
+                meats.Add(meatData);
+
             }
             return meats;
-        }
-        public Meat ParseMeatIntoParameters(string[] meatLine)
-        {
-            Meat meatData = new();
-            meatData.Name = meatLine[0];
-            meatData.Protein = double.Parse(meatLine[1]);
-            meatData.Price = decimal.Parse(meatLine[2]);
-            meatData.Barcode = meatLine[3];
-            meatData.Weight = double.Parse(meatLine[4]);
-            meatData.Index = int.Parse(meatLine[5]);
-
-            return meatData;
         }
     }
 }
