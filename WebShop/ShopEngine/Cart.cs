@@ -8,10 +8,10 @@ namespace WebShop.ShopEngine
     public class Cart:Good
     {
 
-        public Cart(string name, double sum, decimal price, int barcode, double weight) : base(name, barcode, price)
-        {
+        //public Cart(string name, double sum, decimal price, int barcode, double weight) : base(name, barcode, price)
+        //{
 
-        }
+        //}
 
         public List<Cart> ShoppingCart { get; set; }
 
@@ -39,14 +39,14 @@ namespace WebShop.ShopEngine
                     List<string> newCart = new();
                     VegetablesRepository repo = new();
 
-                    foreach (var item in veggies)
-                    {
-                        if (parsedValue == item.Barcode)
-                        {
-                            newCart.Add(repo.LoadVegetables()[parsedValue].Name);
-                            sum += repo.LoadVegetables()[parsedValue].Price;
-                        }
-                    }
+                    //foreach (var item in veggies)
+                    //{
+                    //    if (parsedValue == item.Barcode)
+                    //    {
+                    //        newCart.Add(repo.LoadVegetables()[parsedValue].Name);
+                    //        sum += repo.LoadVegetables()[parsedValue].Price;
+                    //    }
+                    //}
                 }
             }
         }

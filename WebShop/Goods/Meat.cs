@@ -6,9 +6,9 @@ namespace WebShop
         public string Name { get; set; }
         public double Protein { get; set; }
 
-        public Meat()
+        public Meat(string name = "", double protein = 0, decimal price = 0, string barcode = "", double weight = 0, int index=0) : base(price, barcode, weight, index)
         {
-            Name = "";
+            Name = name;
             Protein = 0;
         }
     }

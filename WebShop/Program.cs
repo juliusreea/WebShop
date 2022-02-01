@@ -7,6 +7,8 @@ namespace WebShop
     {
         static void Main(string[] args)
         {
+            Printer printer = new();
+            printer.VegetablesPrinter();
             Menu menu = new();
             menu.ShopInterface();
         }

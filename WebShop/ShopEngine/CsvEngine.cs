@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Globalization;
 
 namespace WebShop.ShopEngine
 {
@@ -41,23 +42,24 @@ namespace WebShop.ShopEngine
 
         public List<Vegetables> CsvReadFileVegetables()
         {
-            string path = @"Users/juliusvaigauskas/projects/vegetables.txt";
+            string path = @"C:\Users\Dell\Documents\GitHub\WebShop\WebShop\CSVFIles\Vegetables.csv";
 
-            List<string> lines = new List<string>();
+            List<string> lines = new ();
 
             lines = File.ReadAllLines(path).ToList();
-
+            
             List<Vegetables> vegetables = new();
 
             foreach (var line in lines)
             {
-                string[] vegetableLine = line.Split(',');
+                string[] vegetableLine = line.Split(";");
                 Vegetables vegetabelData = new();
                 vegetabelData.Name = vegetableLine[0];
-                vegetabelData.Fibers = double.Parse(vegetableLine[1]);
-                vegetabelData.Price = decimal.Parse(vegetableLine[2]);
+                vegetabelData.Fibers = Convert.ToDouble(vegetableLine[1], CultureInfo.InvariantCulture);
+                vegetabelData.Price = Convert.ToDecimal(vegetableLine[2], CultureInfo.InvariantCulture);
                 vegetabelData.Barcode = vegetableLine[3];
-                vegetabelData.Weight = double.Parse(vegetableLine[4]);
+                vegetabelData.Weight = Convert.ToDouble(vegetableLine[4], CultureInfo.InvariantCulture);
+                vegetabelData.Index = int.Parse(vegetableLine[5]);
                 vegetables.Add(vegetabelData);
             }
             return vegetables;
@@ -102,7 +104,7 @@ namespace WebShop.ShopEngine
 
         public List<Meat> CsvReadFileMeat()
         {
-            string path = @"Users/juliusvaigauskas/projects/meat.txt";
+            string path = @"C:\Users\Dell\Documents\GitHub\WebShop\WebShop\CSVFIles\Meat.csv";
 
             List<string> lines = new List<string>();
 
@@ -125,6 +127,7 @@ namespace WebShop.ShopEngine
             meatData.Price = decimal.Parse(meatLine[2]);
             meatData.Barcode = meatLine[3];
             meatData.Weight = double.Parse(meatLine[4]);
+            meatData.Index = int.Parse(meatLine[5]);
 
             return meatData;
         }
