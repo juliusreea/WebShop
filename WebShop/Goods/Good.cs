@@ -8,12 +8,16 @@ namespace WebShop
         public double Weight { get; set; }
         public int Index { get; set; }
 
-        public Good(decimal price = 0, string barcode = "", double weight = 0, int index = 0)
+        public Good(decimal price, string barcode, double weight, int index)
         {
             Price = price;
             Barcode = barcode;
             Weight = weight;
             Index = index;
+        }
+
+        public Good()
+        {
         }
     }
 }

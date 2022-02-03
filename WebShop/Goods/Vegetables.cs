@@ -6,10 +6,18 @@ namespace WebShop
         public string Name { get; set; }
         public double Fibers { get; set; }
 
-        public Vegetables(string name = "", double fibers = 0, decimal price = 0, string barcode = "", double weight = 0, int index = 0) : base(price, barcode, weight, index)
+        public Vegetables(string name , double fibers, decimal price, string barcode , double weight, int index) : base(price, barcode, weight, index)
         {
             Name = name;
             Fibers = fibers;
+        }
+
+        public Vegetables()
+        {
+        }
+        public override string ToString()
+        {
+            return $"{Name},{Fibers},{Price},{Barcode},{Weight},{Index}";
         }
     }
 }

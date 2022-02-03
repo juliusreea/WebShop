@@ -1,98 +1,130 @@
 ﻿using System;
-
+using WebShop.GoodsRepository;
 
 namespace WebShop.ShopEngine
 { 
     public class Menu
     {
+        public decimal BuyerMoney;
         public Cart cart = new Cart(); 
         public MenuWindows windows = new();
         public bool doContinue = true;
         public Printer printer = new();
+        public CartRepository cartList = new CartRepository();
+
         public void ShopInterface()
         {
-            
             while (doContinue)
             {
+                Console.Clear();
                 Console.WriteLine("Welcome to webshop \nPlease enter your amount before proceeding further");
                 string userInput = Console.ReadLine();
-                decimal parsedValue;
-                if (!decimal.TryParse(userInput, out parsedValue))
+                bool menuTrue = true;
+                while (menuTrue)
                 {
-                    Console.WriteLine("Your input is incorrect, please enter correct amount");
-                }
-                if (parsedValue <= 0)
-                {
-                    Console.Clear();
-                    Console.WriteLine("You'll be able only to view goods");
-                    windows.GeneralWindowViewONly();
-                }
-                else
-                {
-                    Console.Clear();
-                    windows.GeneralWindow();
-                    //Console.WriteLine("Please select");
-                    //Console.WriteLine("View goods [1]");
-                    //Console.WriteLine("Purchase goods [2]");
-                    //Console.WriteLine("View shopping cart [3]");
-                    //Console.WriteLine("Check out [4]");
-                    //Console.WriteLine("Send receipt [5]");
-
-                    string menuInput = Console.ReadLine().Trim();
-                    int parsedValue1;
-                    if (!Int32.TryParse(menuInput, out parsedValue1) || parsedValue1 < 1 || parsedValue1 > 5)
+                    if (!decimal.TryParse(userInput, out cartList.buyerMoney))
                     {
-                        Console.WriteLine("Your input is incorrect, please try again");
-                    }
+                        Console.WriteLine("Your input is incorrect, press any button to refresh");
+                        Console.ReadKey();
+                        break;
 
+                    }
+                    else if (cartList.buyerMoney <= 0)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("press any key to view all items");
+                        windows.GeneralWindowViewONly();
+                        printer.AllGoodsPrinter();
+                        ReturnToMainMenu();
+                        break;
+                    }
                     else
                     {
                         Console.Clear();
-                        Console.WriteLine("Please select list of good for display");
-                        Console.WriteLine("Display Meat List [1]");
-                        Console.WriteLine("Display Drink List [2]");
-                        Console.WriteLine("Display Vegetables List [3]");
-                        Console.WriteLine("Display Sweets List [4]");
+                        windows.GeneralWindow();
+                        Console.WriteLine($"Your balance: {cartList.buyerMoney - cartList.totalSum}");
 
-                        string menuInput1 = Console.ReadLine();
-                        int parsedValue2;
-                        if (Int32.TryParse(menuInput1, out parsedValue2))
+                        string menuInput = Console.ReadLine().Trim();
+                        int parsedValue1;
+                        if (!int.TryParse(menuInput, out parsedValue1) || parsedValue1 < 1 || parsedValue1 > 6)
                         {
-                            switch (parsedValue2)
-                            {
-                                case 1:
-                                    Console.Clear();
-                                    printer.MeatPrinter();
-                                    cart.CartAddingDeviceMeat();
-                                    ReturnToMainMenu();
-                                    break;
-                                case 2:
-                                    Console.Clear();
-                                    printer.DrinksPrinter();
-                                    cart.CartAddingDeviceDrinks();
-                                    ReturnToMainMenu();
-                                    break;
-                                case 3:
-                                    Console.Clear();
-                                    printer.VegetablesPrinter();
-                                    cart.CartAddingDeviceVegetables();
-                                    ReturnToMainMenu();
-                                    break;
-                                case 4:
-                                    Console.Clear();
-                                    printer.SweetsPrinter();
-                                    cart.CartAddingDeviceSweets();
-                                    ReturnToMainMenu();
-                                    break;
-                            }
-                            
+                            Console.WriteLine("Your input is incorrect, press any key to refresh");
+                            Console.ReadKey();
                         }
-                        else 
+                        if (parsedValue1 == 1)
                         {
-                            Console.WriteLine("Your input is incorrect, please try again");
+                            Console.Clear();
+                            printer.AllGoodsPrinter();
+                           
+                            ReturnToMainMenu();
+                        }
+                        else if (parsedValue1 == 2)
+                        {
+                            Console.Clear();
+                            windows.GoodsList();
+                            
+                            string menuInput1 = Console.ReadLine();
+                            int parsedValue2;
+                            if (Int32.TryParse(menuInput1, out parsedValue2))
+                            {
+                                switch (parsedValue2)
+                                {
+                                    case 1:
+                                        Console.Clear();
+                                        printer.MeatPrinter();
+                                        MeatRepository meats = new();
+                                        cartList.AddMeatsToCart(meats, cartList);
+                                        ReturnToMainMenu();
+                                        break;
+                                    case 2:
+                                        Console.Clear();
+                                        printer.DrinksPrinter();
+                                        DrinksRepository drinks = new();
+                                        cartList.AddDrinksToCart(drinks, cartList);
+                                        ReturnToMainMenu();
+                                        break;
+                                    case 3:
+                                        Console.Clear();
+                                        printer.VegetablesPrinter();
+                                        VegetablesRepository veggies = new();
+                                        cartList.AddVegetableToCart(veggies, cartList);
+                                        ReturnToMainMenu();
+                                        break;
+                                    case 4:
+                                        Console.Clear();
+                                        printer.SweetsPrinter();
+                                        SweetsRepository sweets = new();
+                                        cartList.AddSweetsToCart(sweets, cartList);
+                                        ReturnToMainMenu();
+                                        break;
+                                }
+                            }
+                        }
+                        else if (parsedValue1 == 3)
+                        {
+                            Console.Clear();
+                            cartList.ShoppingCartPrinter();
+                            ReturnToMainMenu();
+                        }
+                        else if (parsedValue1 == 4)
+                        {
+                            Console.Clear();
+                            cartList.CheckOutPrinter();
+                            Console.ReadKey();
+                            ReturnToMainMenu();
+                        }
+                        else if(parsedValue1 == 5)
+                        {
+                            Environment.Exit(0);
+                           
+                        }
+                        else
+                        {
+                            Console.WriteLine("input incorrect");
                         }
                     }
                 }
+                
             }
             
         }

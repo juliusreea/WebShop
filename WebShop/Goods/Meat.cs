@@ -6,10 +6,14 @@ namespace WebShop
         public string Name { get; set; }
         public double Protein { get; set; }
 
-        public Meat(string name = "", double protein = 0, decimal price = 0, string barcode = "", double weight = 0, int index=0) : base(price, barcode, weight, index)
+        public Meat(string name, double protein, decimal price, string barcode, double weight, int index) : base(price, barcode, weight, index)
         {
             Name = name;
-            Protein = 0;
+            Protein = protein;
+        }
+
+        public Meat()
+        {
         }
     }
 }

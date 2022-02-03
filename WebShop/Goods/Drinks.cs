@@ -6,10 +6,14 @@ namespace WebShop
         public string Name { get; set; }
         public double Liters { get; set; }
 
-        public Drinks(string name = "", double liters =0, decimal price=0, string barcode = "", double weight=0) : base(price, barcode, weight)
+        public Drinks(string name, double liters, decimal price, string barcode, double weight, int index) : base(price, barcode, weight, index)
         {
             Name = name;
             Liters = liters;
+        }
+
+        public Drinks()
+        {
         }
     }
 }

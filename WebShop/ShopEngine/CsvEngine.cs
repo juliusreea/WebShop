@@ -21,7 +21,7 @@ namespace WebShop.ShopEngine
 
             foreach(var line in lines)
             {
-                string[] drinkLine = line.Split(',');
+                string[] drinkLine = line.Split(";");
                 Drinks drinkData = new();
                 drinkData.Name = drinkLine[0];
                 drinkData.Liters = Convert.ToDouble(drinkLine[1], CultureInfo.InvariantCulture);
@@ -75,7 +75,7 @@ namespace WebShop.ShopEngine
 
             foreach (var line in lines)
             {
-                string[] sweetsLine = line.Split(',');
+                string[] sweetsLine = line.Split(";");
                 Sweets sweetsData = new();
                 sweetsData.Name = sweetsLine[0];
                 sweetsData.Carbohydrates = Convert.ToDouble(sweetsLine[1], CultureInfo.InvariantCulture);
