@@ -106,14 +106,34 @@ namespace WebShop.ShopEngine
                         }
                         else if (parsedValue1 == 4)
                         {
+                            
                             Console.Clear();
                             printer.CheckOutPrinter(cartRepository);
-                            Console.WriteLine("enter your email if you want check sent");
-                            string emailAddress = Console.ReadLine();
-                            MailingService mailingService = new MailingService();
-                            mailingService.CreateTestMessage(emailAddress);
-                            Console.WriteLine("Mail sent");
-                            ReturnToMainMenu();
+                            Console.WriteLine("Do you want to receive receipt? y/n");
+                            string answer = Console.ReadLine().Trim().ToLower();
+                            bool mailSend = true;
+                            while (mailSend)
+                            if (answer == "y")
+                            {
+                                Console.WriteLine("enter your email if you want check sent");
+                                string emailAddress = Console.ReadLine();
+                                MailingService mailingService = new MailingService();
+                                mailingService.CreateTestMessage(emailAddress);
+                                Console.WriteLine("Mail sent");
+                                ReturnToMainMenu();
+                                mailSend = false;
+                            }
+                            else if (answer == "n")
+                            { 
+                                mailSend = false;
+                            }
+                            else
+                            {
+                                Console.WriteLine("incorect input");
+                                Console.ReadKey();
+                                    break;
+                            }
+                            
                         }
                         else if(parsedValue1 == 5)
                         {

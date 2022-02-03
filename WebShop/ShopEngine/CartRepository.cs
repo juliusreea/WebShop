@@ -124,12 +124,12 @@ namespace WebShop.ShopEngine
                 Console.WriteLine($"your balance is {buyerMoney - totalSum}");
                 Console.WriteLine("Please enter number of meat you want to add to your cart or n to quit");
                 string input = Console.ReadLine();
-                if (input == "n")
+                if(input == "n")
                 {
                     doContinue = false;
-                    break;
+
                 }
-                if (!Int32.TryParse(input, out int parsedValue) || parsedValue < 1 || parsedValue > 5)
+                if(!Int32.TryParse(input, out int parsedValue) || parsedValue < 1 || parsedValue > 5)
                 {
                     Console.WriteLine("Your input is incorrect please press any key to refresh");
                     Console.ReadKey();
