@@ -71,8 +71,13 @@ namespace WebShop.ShopEngine
             while (doContinue)
             {
                 Console.WriteLine($"your balance is {buyerMoney - totalSum}");
-                Console.WriteLine("Please enter number of vegetable you want to add to your cart");
+                Console.WriteLine("Please enter number of vegetable you want to add to your cart or n to quit");
                 string input = Console.ReadLine();
+                if (input == "n")
+                {
+                    doContinue = false;
+                    break;
+                }
                 if (!Int32.TryParse(input, out int parsedValue) || parsedValue < 1|| parsedValue > 5)
                 {
                     Console.WriteLine("Your input is incorrect please press any key to refresh");
@@ -93,13 +98,14 @@ namespace WebShop.ShopEngine
                     }
                         
                 }
-               Console.WriteLine("Will you need to add any more vegetables? y/n");
+                Console.WriteLine("Will you need to add any more vegetables? y/n");
                 string answer = Console.ReadLine().Trim().ToLower();
                 if(answer == "y")
                 {
                     doContinue = true;
+                    Console.ReadKey();
                 }
-                else if(answer == "n")
+                if(answer == "n")
                 {
                     doContinue= false;
                 }
@@ -118,8 +124,13 @@ namespace WebShop.ShopEngine
             while (doContinue)
             {
                 Console.WriteLine($"your balance is {buyerMoney - totalSum}");
-                Console.WriteLine("Please enter number of meat you want to add to your cart");
+                Console.WriteLine("Please enter number of meat you want to add to your cart or n to quit");
                 string input = Console.ReadLine();
+                if (input == "n")
+                {
+                    doContinue = false;
+                    break;
+                }
                 if (!Int32.TryParse(input, out int parsedValue) || parsedValue < 1 || parsedValue > 5)
                 {
                     Console.WriteLine("Your input is incorrect please press any key to refresh");
@@ -164,8 +175,13 @@ namespace WebShop.ShopEngine
             while (doContinue)
             {
                 Console.WriteLine($"your balance is {buyerMoney - totalSum}");
-                Console.WriteLine("Please enter number of sweet you want to add to your cart");
+                Console.WriteLine("Please enter number of sweet you want to add to your cart or n to quit");
                 string input = Console.ReadLine();
+                if (input == "n")
+                {
+                    doContinue = false;
+                    break;
+                }
                 if (!Int32.TryParse(input, out int parsedValue) || parsedValue < 1 || parsedValue > 5)
                 {
                     Console.WriteLine("Your input is incorrect please press any key to refresh");
@@ -211,9 +227,14 @@ namespace WebShop.ShopEngine
             {
                 Console.WriteLine($"your balance is {buyerMoney - totalSum}");
 
-                Console.WriteLine("Please enter number of drink you want to add to your cart");
+                Console.WriteLine("Please enter number of drink you want to add to your cart or n to quit");
 
                 string input = Console.ReadLine();
+                if (input == "n")
+                {
+                    doContinue = false;
+                    break;
+                }
                 if (!Int32.TryParse(input, out int parsedValue) || parsedValue < 1 || parsedValue > 5)
                 {
                     Console.WriteLine("Your input is incorrect please press any key to refresh");
@@ -246,7 +267,7 @@ namespace WebShop.ShopEngine
                 }
                 else
                 {
-                    Console.WriteLine("input is incorrect");
+                    Console.WriteLine("input is incorrect press any key to refresh");
                     doContinue = true;
                     Console.ReadKey();
                 }

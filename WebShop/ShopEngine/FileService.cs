@@ -15,7 +15,7 @@ namespace WebShop.ShopEngine
             //File.AppendAllLines(path,);
             foreach (Cart item in list)
             {
-                cartList.Add($"{item.Name}, {item.Price}, {item.Weight}, {item.Barcode}");
+                cartList.Add($"{item.Name}, Price: {item.Price}, Weight: {item.Weight}, Barcode; {item.Barcode}");
             }
             File.WriteAllLines(path, cartList);
             File.AppendAllText(path, $"Total amount :{cartRepository.totalSum}");

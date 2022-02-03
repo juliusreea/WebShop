@@ -5,7 +5,7 @@ namespace WebShop.ShopEngine
 { 
     public class Menu
     {
-        public decimal BuyerMoney;
+        public decimal buyerMoney;
         public Cart cart = new Cart(); 
         public MenuWindows windows = new();
         public bool doContinue = true;
@@ -32,7 +32,6 @@ namespace WebShop.ShopEngine
                     else if (cartList.buyerMoney <= 0)
                     {
                         Console.Clear();
-                        Console.WriteLine("press any key to view all items");
                         windows.GeneralWindowViewONly();
                         printer.AllGoodsPrinter();
                         ReturnToMainMenu();
@@ -110,6 +109,10 @@ namespace WebShop.ShopEngine
                         {
                             Console.Clear();
                             printer.CheckOutPrinter(cartList);
+                            Console.WriteLine("enter your email if you want check sent");
+                            string emailAddress = Console.ReadLine();
+                            MailingService mailingService = new MailingService();
+                            mailingService.CreateTestMessage(emailAddress);
                             ReturnToMainMenu();
                         }
                         else if(parsedValue1 == 5)

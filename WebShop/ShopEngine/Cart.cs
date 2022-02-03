@@ -8,9 +8,11 @@ namespace WebShop.ShopEngine
     public class Cart : Good
     {
         public string Name;
-        public Cart(string name, decimal price, string barcode, double weight, int index) : base(price, barcode, weight, index)
+        public string Specific;
+        public Cart(string name, string specific, decimal price, string barcode, double weight, int index) : base(price, barcode, weight, index)
         {
             Name = name;
+            Specific = specific;
         }
         public Cart()
         {
