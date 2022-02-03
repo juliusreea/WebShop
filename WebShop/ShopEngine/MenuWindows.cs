@@ -8,7 +8,7 @@ namespace WebShop.ShopEngine
     {
         public void GeneralWindowViewONly()
         {
-            Console.WriteLine("Since your balance is 0 view goods only");
+            Console.WriteLine("Since your balance is 0, view goods only");
             
         }
         public void GeneralWindow()

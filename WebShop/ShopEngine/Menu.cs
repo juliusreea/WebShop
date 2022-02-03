@@ -5,12 +5,11 @@ namespace WebShop.ShopEngine
 { 
     public class Menu
     {
-        public decimal buyerMoney;
         public Cart cart = new Cart(); 
         public MenuWindows windows = new();
         public bool doContinue = true;
         public Printer printer = new();
-        public CartRepository cartList = new CartRepository();
+        public CartRepository cartRepository = new CartRepository();
 
         public void ShopInterface()
         {
@@ -22,14 +21,14 @@ namespace WebShop.ShopEngine
                 bool menuTrue = true;
                 while (menuTrue)
                 {
-                    if (!decimal.TryParse(userInput, out cartList.buyerMoney))
+                    if (!decimal.TryParse(userInput, out cartRepository.buyerMoney))
                     {
                         Console.WriteLine("Your input is incorrect, press any button to refresh");
                         Console.ReadKey();
                         break;
 
                     }
-                    else if (cartList.buyerMoney <= 0)
+                    else if (cartRepository.buyerMoney <= 0)
                     {
                         Console.Clear();
                         windows.GeneralWindowViewONly();
@@ -41,7 +40,7 @@ namespace WebShop.ShopEngine
                     {
                         Console.Clear();
                         windows.GeneralWindow();
-                        Console.WriteLine($"Your balance: {cartList.buyerMoney - cartList.totalSum}");
+                        Console.WriteLine($"Your balance: {cartRepository.buyerMoney - cartRepository.totalSum}");
 
                         string menuInput = Console.ReadLine().Trim();
                         int parsedValue1;
@@ -72,28 +71,28 @@ namespace WebShop.ShopEngine
                                         Console.Clear();
                                         printer.MeatPrinter();
                                         MeatRepository meats = new();
-                                        cartList.AddMeatsToCart(meats, cartList);
+                                        cartRepository.AddMeatsToCart(meats, cartRepository);
                                         ReturnToMainMenu();
                                         break;
                                     case 2:
                                         Console.Clear();
                                         printer.DrinksPrinter();
                                         DrinksRepository drinks = new();
-                                        cartList.AddDrinksToCart(drinks, cartList);
+                                        cartRepository.AddDrinksToCart(drinks, cartRepository);
                                         ReturnToMainMenu();
                                         break;
                                     case 3:
                                         Console.Clear();
                                         printer.VegetablesPrinter();
                                         VegetablesRepository veggies = new();
-                                        cartList.AddVegetableToCart(veggies, cartList);
+                                        cartRepository.AddVegetableToCart(veggies, cartRepository);
                                         ReturnToMainMenu();
                                         break;
                                     case 4:
                                         Console.Clear();
                                         printer.SweetsPrinter();
                                         SweetsRepository sweets = new();
-                                        cartList.AddSweetsToCart(sweets, cartList);
+                                        cartRepository.AddSweetsToCart(sweets, cartRepository);
                                         ReturnToMainMenu();
                                         break;
                                 }
@@ -102,17 +101,18 @@ namespace WebShop.ShopEngine
                         else if (parsedValue1 == 3)
                         {
                             Console.Clear();
-                            printer.ShoppingCartPrinter(cartList);
+                            printer.ShoppingCartPrinter(cartRepository);
                             ReturnToMainMenu();
                         }
                         else if (parsedValue1 == 4)
                         {
                             Console.Clear();
-                            printer.CheckOutPrinter(cartList);
+                            printer.CheckOutPrinter(cartRepository);
                             Console.WriteLine("enter your email if you want check sent");
                             string emailAddress = Console.ReadLine();
                             MailingService mailingService = new MailingService();
                             mailingService.CreateTestMessage(emailAddress);
+                            Console.WriteLine("Mail sent");
                             ReturnToMainMenu();
                         }
                         else if(parsedValue1 == 5)

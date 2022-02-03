@@ -13,7 +13,7 @@ namespace WebShop.ShopEngine
         public void CreateTestMessage(string email)
         {
             string to = email;
-            string from = "julius1vaigauskas@gmail.com";
+            string from = "webshop.codeacademy@gmail.com";
             MailMessage message = new MailMessage(from, to);
             message.Subject = "Receipt for purchase in WebShop";
             message.Body = @"Receipt for today's purchase attaced in file below thank you";   
@@ -23,7 +23,7 @@ namespace WebShop.ShopEngine
             var file = new Attachment(@"C:\Users\Dell\Documents\GitHub\WebShop\WebShop\CSVFIles\Check.txt");
             message.Attachments.Add(file);
             client.Port = 587;
-            client.Credentials = new NetworkCredential(from, "--");
+            client.Credentials = new NetworkCredential(from, "slaptazodis12");
             client.EnableSsl = true;
             client.Send(message);
         }

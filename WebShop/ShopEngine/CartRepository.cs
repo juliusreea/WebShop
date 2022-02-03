@@ -78,7 +78,7 @@ namespace WebShop.ShopEngine
                     doContinue = false;
                     break;
                 }
-                if (!Int32.TryParse(input, out int parsedValue) || parsedValue < 1|| parsedValue > 5)
+                if(!Int32.TryParse(input, out int parsedValue) || parsedValue < 1|| parsedValue > 5)
                 {
                     Console.WriteLine("Your input is incorrect please press any key to refresh");
                     Console.ReadKey();
@@ -103,18 +103,16 @@ namespace WebShop.ShopEngine
                 if(answer == "y")
                 {
                     doContinue = true;
-                    Console.ReadKey();
                 }
-                if(answer == "n")
+                else if(answer == "n")
                 {
-                    doContinue= false;
+                    doContinue = false;
                 }
                 else
                 {
                     Console.WriteLine("input is incorrect press any key to refresh");
                     Console.ReadKey();
                     doContinue = true;
-                    
                 }
             }
         }
