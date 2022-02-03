@@ -5,12 +5,11 @@ namespace WebShop.ShopEngine
 {
     public class FileService
     {
-        public readonly string path = @"C:\Users\Dell\Documents\GitHub\WebShop\WebShop\CSVFIles\CartList.txt";
+        public readonly string path = @"C:\Users\Dell\Documents\GitHub\WebShop\WebShop\CSVFIles\Check.txt";
 
         public List<string> cartList = new();
-        public CartRepository cartRepository;
 
-        public void FileWriteService(List<Cart> list)
+        public void FileWriteService(List<Cart> list, CartRepository cartRepository)
         {
 
             //File.AppendAllLines(path,);
@@ -19,7 +18,8 @@ namespace WebShop.ShopEngine
                 cartList.Add($"{item.Name}, {item.Price}, {item.Weight}, {item.Barcode}");
             }
             File.WriteAllLines(path, cartList);
-            File.AppendAllText(path, $"Date of purchase: {DateTime.Now}");
+            File.AppendAllText(path, $"Total amount :{cartRepository.totalSum}");
+            File.AppendAllText(path, $"\nDate of purchase: {DateTime.Now}");
         }
     }
 }

@@ -57,14 +57,25 @@ namespace WebShop.ShopEngine
             Console.WriteLine("-----Meat List-----");
             MeatPrinter();
         }
-        //public void ShoppingCartPrinter()
-        //{
-        //    foreach (var item in cartList.CartList)
-        //    {
-        //        Console.WriteLine($"{item.Name},Barcode: {item.Barcode},Weight: {item.Weight},Price: {item.Price}");
-        //    }
-        //    Console.WriteLine($"-----total amount of goods {cartList.totalSum}----");
-        //    Console.WriteLine("");
-        //}
+        public void ShoppingCartPrinter(CartRepository cartRepository)
+        {
+            foreach (var item in cartRepository.CartList)
+            {
+                Console.WriteLine($"{item.Name},Barcode: {item.Barcode},Weight: {item.Weight},Price: {item.Price}");
+            }
+            Console.WriteLine($"-----total amount of goods {cartRepository.totalSum}----");
+        }
+        public void CheckOutPrinter(CartRepository cartRepository)
+        {
+            foreach (var item in cartRepository.CartList)
+            {
+                Console.WriteLine($"{item.Name},Barcode: {item.Barcode},Weight: {item.Weight},Price: {item.Price}");
+            }
+            Console.WriteLine($"-----total amount of goods {cartRepository.totalSum}----");
+            FileService fileService = new FileService();
+            fileService.FileWriteService(cartRepository.CartList, cartRepository);
+            Console.WriteLine($"Date of purchase :{DateTime.Now}");
+            Console.WriteLine("Check has been printed");
+        }
     }
 }

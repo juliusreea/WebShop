@@ -70,6 +70,7 @@ namespace WebShop.ShopEngine
             bool doContinue = true;
             while (doContinue)
             {
+                Console.WriteLine($"your balance is {buyerMoney - totalSum}");
                 Console.WriteLine("Please enter number of vegetable you want to add to your cart");
                 string input = Console.ReadLine();
                 if (!Int32.TryParse(input, out int parsedValue) || parsedValue < 1|| parsedValue > 5)
@@ -88,7 +89,7 @@ namespace WebShop.ShopEngine
                     }
                     else
                     {
-                        Console.WriteLine("sorry you dont have enough money to add this item");
+                        Console.WriteLine($"sorry you dont have enough money to add this item, {buyerMoney - totalSum} left");
                     }
                         
                 }
@@ -104,7 +105,7 @@ namespace WebShop.ShopEngine
                 }
                 else
                 {
-                    Console.WriteLine("input is incorrect");
+                    Console.WriteLine("input is incorrect press any key to refresh");
                     Console.ReadKey();
                     doContinue = true;
                     
@@ -116,6 +117,7 @@ namespace WebShop.ShopEngine
             bool doContinue = true;
             while (doContinue)
             {
+                Console.WriteLine($"your balance is {buyerMoney - totalSum}");
                 Console.WriteLine("Please enter number of meat you want to add to your cart");
                 string input = Console.ReadLine();
                 if (!Int32.TryParse(input, out int parsedValue) || parsedValue < 1 || parsedValue > 5)
@@ -135,7 +137,7 @@ namespace WebShop.ShopEngine
                     }
                     else
                     {
-                        Console.WriteLine("sorry you dont have enough money to add this item");
+                        Console.WriteLine($"sorry you dont have enough money to add this item, {buyerMoney - totalSum} left");
                     }
                 }
                 Console.WriteLine("Will you need to add any more meat? y/n");
@@ -150,7 +152,7 @@ namespace WebShop.ShopEngine
                 }
                 else
                 {
-                    Console.WriteLine("input is incorrect");
+                    Console.WriteLine("input is incorrect, press any key to refresh");
                     doContinue = true;
                     Console.ReadKey();
                 }
@@ -161,6 +163,7 @@ namespace WebShop.ShopEngine
             bool doContinue = true;
             while (doContinue)
             {
+                Console.WriteLine($"your balance is {buyerMoney - totalSum}");
                 Console.WriteLine("Please enter number of sweet you want to add to your cart");
                 string input = Console.ReadLine();
                 if (!Int32.TryParse(input, out int parsedValue) || parsedValue < 1 || parsedValue > 5)
@@ -179,7 +182,7 @@ namespace WebShop.ShopEngine
                     }
                     else
                     {
-                        Console.WriteLine("sorry you dont have enough money to add this item");
+                        Console.WriteLine($"sorry you dont have enough money to add this item, {buyerMoney - totalSum} left");
                     }
                         
                 }
@@ -228,7 +231,7 @@ namespace WebShop.ShopEngine
                     }
                     else
                     {
-                        Console.WriteLine("sorry you dont have enough money to add this item");
+                        Console.WriteLine($"sorry you dont have enough money to add this item, {buyerMoney - totalSum} left");
                     } 
                 }
                 Console.WriteLine("Will you need to add any more drinks? y/n");
@@ -249,24 +252,7 @@ namespace WebShop.ShopEngine
                 }
             }
         }
-        public void ShoppingCartPrinter()
-        {
-            foreach (var item in CartList)
-            {
-                Console.WriteLine($"{item.Name},Barcode: {item.Barcode},Weight: {item.Weight},Price: {item.Price}");
-            }
-            Console.WriteLine($"-----total amount of goods {totalSum}----");
-        }
-        public void CheckOutPrinter()
-        {
-            foreach (var item in CartList)
-            {
-                Console.WriteLine($"{item.Name},Barcode: {item.Barcode},Weight: {item.Weight},Price: {item.Price}");
-            }
-            Console.WriteLine($"-----total amount of goods {totalSum}----");
-            FileService fileService = new FileService();
-            fileService.FileWriteService(CartList);
-            Console.WriteLine("Check has been printed");
-        }
+        
+        
     }
 }

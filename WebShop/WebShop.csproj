@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ShopEngine\CheckOut.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="GoodRepository\" />
     <None Remove="Goods\" />
     <None Remove="ShopEngine\" />

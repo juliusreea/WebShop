@@ -103,14 +103,13 @@ namespace WebShop.ShopEngine
                         else if (parsedValue1 == 3)
                         {
                             Console.Clear();
-                            cartList.ShoppingCartPrinter();
+                            printer.ShoppingCartPrinter(cartList);
                             ReturnToMainMenu();
                         }
                         else if (parsedValue1 == 4)
                         {
                             Console.Clear();
-                            cartList.CheckOutPrinter();
-                            Console.ReadKey();
+                            printer.CheckOutPrinter(cartList);
                             ReturnToMainMenu();
                         }
                         else if(parsedValue1 == 5)
