@@ -14,6 +14,12 @@ namespace WebShop
 
         public Drinks()
         {
+
+        }
+        public override string ToString()
+        {
+            return $"{Index} {Name} {Liters} {Price} {Barcode} {Weight}";
+            
         }
     }
 }

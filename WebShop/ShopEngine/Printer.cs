@@ -7,12 +7,14 @@ namespace WebShop.ShopEngine
 {
     public class Printer
     {
+        public string drinkspath = @"C:\Users\Dell\Documents\GitHub\WebShop\WebShop\CSVFIles\Drinks.csv";
         public CartRepository cartList;
         public void DrinksPrinter()
         {
-            var drinks = new DrinksRepository();
-            var drinkList = drinks.LoadDrinks();
-            foreach(var drink in drinkList)
+            var drinkList = GenericFileReader.LoadFromFileText<Drinks>(drinkspath);
+            //var drinks = new DrinksRepository();
+            //var drinkList = drinks.LoadDrinks();
+            foreach (var drink in drinkList)
             {
                 Console.WriteLine($"[{drink.Index}] {drink.Name}, Volume: {drink.Liters}, Price: {drink.Price}, Barcode: {drink.Barcode}, Weight: {drink.Weight}");
             }

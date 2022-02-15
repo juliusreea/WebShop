@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using WebShop.GoodsRepository;
+
 namespace WebShop.ShopEngine
 {
     public class FileService
@@ -8,6 +10,7 @@ namespace WebShop.ShopEngine
         public readonly string path = @"C:\Users\Dell\Documents\GitHub\WebShop\WebShop\CSVFIles\Check.txt";
 
         public List<string> cartList = new();
+
 
         public void FileWriteService(List<Cart> list, CartRepository cartRepository)
         {
